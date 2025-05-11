@@ -14,6 +14,7 @@ class GameSprite(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.can_fire = True 
 
     def reset(self):
 
@@ -27,6 +28,12 @@ class Line(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+    
+    def in_range(self, x, y):
+        if x > self.rect.x and x < self.rect.x + self.rect.width and y > self.rect.y and y < self.rect.y + self.rect.height:
+            return True
+        else:
+            return False
     
     def reset(self):
 
@@ -90,7 +97,22 @@ while game:
         second_player.rect.y +=  second_player.speed
 
 
+    if green_board2.in_range(first_player.rect.x, first_player.rect.y):
+        first_player.can_fire = False
+    else:
+        first_player.can_fire = True
+
+    
+    if green_board1.in_range(second_player.rect.x, second_player.rect.y):
+        second_player.can_fire = False
+    else:
+        second_player.can_fire = True
+
+
 
 
 
     display.update()
+
+    print(second_player.can_fire)
+    print(first_player.can_fire)
