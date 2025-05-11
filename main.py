@@ -19,13 +19,29 @@ class GameSprite(sprite.Sprite):
 
         window.blit(self.image, (self.rect.x, self.rect.y))
 
+class Line(sprite.Sprite):
+    def __init__(self, sprite_image, x, y, scale_x, scale_y):
+        super().__init__()
+
+        self.image = transform.scale(image.load(sprite_image), (scale_x, scale_y))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+    
+    def reset(self):
+
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
+
 window = display.set_mode((700, 500))
 display.set_caption("Space Shooter Beta")
 bg = image.load("Media/bg.jpg")
 background = transform.scale(bg, (700, 500))
 first_player = GameSprite('Media/player.png', 400, 100, 2, 60)
 second_player = GameSprite('Media/player2.png', 100, 100, 2, 60)
-
+red_board = Line('Media/red_line.png', 340, 0, 20, 500)
+green_board1 = Line('Media/green_line.png',0 , 0, 200, 500)
+green_board2 = Line('Media/green_line.png',500, 0, 200, 500)
 #   Game
 
 game = True
@@ -35,6 +51,9 @@ while game:
     #   Show background
 
     window.blit(background, (0, 0))
+    red_board.reset()
+    green_board1.reset()
+    green_board2.reset()
     first_player.reset()
     second_player.reset()
     clock = time.Clock()
