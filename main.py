@@ -51,19 +51,19 @@ while game:
         
     keys_pressed = key.get_pressed()
 
-    if keys_pressed[K_LEFT] and  first_player.rect.x > 5:
+    if keys_pressed[K_LEFT] and  first_player.rect.x > 355:
         first_player.rect.x -=  first_player.speed
-    if keys_pressed[K_RIGHT] and  first_player.rect.x < 595:
+    if keys_pressed[K_RIGHT] and  first_player.rect.x < 635:
         first_player.rect.x +=  first_player.speed
     if keys_pressed[K_UP] and  first_player.rect.y > 5:
         first_player.rect.y -=  first_player.speed
     if keys_pressed[K_DOWN] and  first_player.rect.y < 395:
         first_player.rect.y +=  first_player.speed
 
-
+ 
     if keys_pressed[K_a] and second_player.rect.x > 5:
         second_player.rect.x -=  second_player.speed
-    if keys_pressed[K_d] and  first_player.rect.x < 595:
+    if keys_pressed[K_d] and  second_player.rect.x < 285:
         second_player.rect.x +=  second_player.speed
     if keys_pressed[K_w] and  second_player.rect.y > 5:
         second_player.rect.y -=  second_player.speed
